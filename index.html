@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Copied!</title>
+    <script>
+      window.onload = () => {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+
+        if (code) {
+          navigator.clipboard.writeText(code).then(() => {
+            document.getElementById("msg").innerText = `✅ Password copied: ${code}`;
+          }).catch(() => {
+            document.getElementById("msg").innerText = `❌ Couldn't copy. Please copy manually: ${code}`;
+          });
+        } else {
+          document.getElementById("msg").innerText = "⚠️ No code provided.";
+        }
+      };
+    </script>
+  </head>
+  <body style="font-family:sans-serif;text-align:center;margin-top:100px;">
+    <h2 id="msg">Copying password...</h2>
+    <p>You can now paste it into Figma.</p>
+  </body>
+</html>
