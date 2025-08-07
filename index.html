@@ -1,27 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Copied!</title>
-    <script>
-      window.onload = () => {
-        const params = new URLSearchParams(window.location.search);
-        const code = params.get("code");
-
-        if (code) {
-          navigator.clipboard.writeText(code).then(() => {
-            document.getElementById("msg").innerText = `✅ Password copied: ${code}`;
-          }).catch(() => {
-            document.getElementById("msg").innerText = `❌ Couldn't copy. Please copy manually: ${code}`;
-          });
-        } else {
-          document.getElementById("msg").innerText = "⚠️ No code provided.";
-        }
-      };
-    </script>
+    <meta charset="UTF-8" />
+    <title>Your Access Code</title>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', sans-serif;
+        background: #fdf8ed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      h1 {
+        color: #222;
+        font-size: 22px;
+        margin-bottom: 16px;
+      }
+      .code-box {
+        background: #fff7dd;
+        border: 1px solid #e1d8b7;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-family: monospace;
+        border-radius: 8px;
+        margin-bottom: 16px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:active {
+        background: #333;
+      }
+      .copied {
+        color: green;
+        margin-top: 10px;
+      }
+    </style>
   </head>
-  <body style="font-family:sans-serif;text-align:center;margin-top:100px;">
-    <h2 id="msg">Copying password...</h2>
-    <p>You can now paste it into Figma.</p>
+  <body>
+    <h1>Your personal access code:</h1>
+    <div class="code-box" id="code">ZFB-52j0EjDr</div>
+    <button onclick="copyCode()">Copy code</button>
+    <div class="copied" id="copiedMsg" style="display: none;">✔️ Code copied to clipboard</div>
+
+    <script>
+      function copyCode() {
+        const code = document.getElementById("code").textContent;
+        navigator.clipboard.writeText(code).then(function () {
+          document.getElementById("copiedMsg").style.display = "block";
+        });
+      }
+    </script>
   </body>
 </html>
