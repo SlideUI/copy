@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Your Access Code</title>
+    <title>Designers System – Password Generation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
         font-family: 'Helvetica Neue', sans-serif;
@@ -11,45 +12,52 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        padding: 20px;
+        min-height: 100vh;
         margin: 0;
+        text-align: center;
       }
+
       h1 {
         color: #222;
-        font-size: 22px;
-        margin-bottom: 16px;
+        font-size: 20px;
+        margin-bottom: 8px;
       }
+
       .code-box {
         background: #fff7dd;
         border: 1px solid #e1d8b7;
-        padding: 12px 24px;
-        font-size: 18px;
+        padding: 12px 20px;
+        font-size: 20px;
         font-family: monospace;
         border-radius: 8px;
         margin-bottom: 16px;
+        word-break: break-word;
       }
+
       button {
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 16px;
         background: #000;
         color: #fff;
         border: none;
         border-radius: 6px;
         cursor: pointer;
+        width: 100%;
+        max-width: 280px;
       }
-      button:active {
-        background: #333;
-      }
+
       .copied {
         color: green;
         margin-top: 10px;
+        font-size: 14px;
       }
     </style>
   </head>
   <body>
-    <h1>Your personal access code:</h1>
+    <h1>Your access code:</h1>
     <div class="code-box" id="code">ZFB-52j0EjDr</div>
-    <button onclick="copyCode()">Copy code</button>
+    <button onclick="copyCode()">Copy your unique code</button>
     <div class="copied" id="copiedMsg" style="display: none;">✔️ Code copied to clipboard</div>
 
     <script>
